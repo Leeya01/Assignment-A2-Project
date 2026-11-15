@@ -25,7 +25,14 @@ Significant changes, why I made them and what I checked.
 Which tools I used, what I asked, what I changed and how I checked it. 
 I used chatgtp to generate a image since this is to test genrative imaging that would be a good choice but u can also use a nomral imaging i used that for testing purposes
 
+
+the tool (ChatGPT image generation), plus the model or version if it shows it, and the date you made it
+the prompt, copied as it is
+a note that you resized the image to 512 by 512 for the inpainting model
+a line saying you didn’t edit or retouch it, if that’s true
+
 prompt" Generate a cosy, aesthetically pleasing study space with a desk, laptop, books, a mug, plants and decorative wall posters. Use warm sunset lighting, soft pastel colours and a detailed illustration style."
+
 
 result:
 <img width="1402" height="1122" alt="testImage" src="https://github.com/user-attachments/assets/5add45a6-1bf6-46c2-8b90-d7a5f2920e19" />
