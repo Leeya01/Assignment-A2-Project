@@ -218,3 +218,15 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# keys and secrets
+.env
+*.key
+
+# generated images and model files
+outputs/
+*.safetensors
+*.ckpt
+
+# virtual environment
+.venv/
