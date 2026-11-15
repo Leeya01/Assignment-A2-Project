@@ -1,46 +1,66 @@
-# Assignment-A2-Project
-Prototype for Intelligent Interactive Systems (Assignment 2). A region of an AI-generated image and the AI edits only that area, so one wrong detail can be fixed without regenerating the whole image. Includes a before and after preview, undo and simulated suggested regions.
+**Local Region Image Editing**
 
+Assignment 2 prototype for Intelligent Interactive Systems. The idea: a designer selects one region of an AI-generated image and the AI edits only that area, so one wrong detail can be fixed without regenerating the whole image.
 
-# Local Region Image Editing
+README prose word count: 721 (code and setup commands not counted)
 
-Prose word count: (add at the end)
+**Project status**
 
-## Project status
-What works, what is simulated, what is unfinished. (to fill in)
+Done (notebook experiments, Kaggle):
 
+Paste-back step: the edited area is copied back onto the original, so nothing outside the mask changes
+Precision check: raw model output changed pixels outside the mask by 6.086 (poster text), 5.451 (mug) and 5.214 (added object) on a 0 to 255 scale. After paste-back the change was 0.0
+Removal with LaMa, replacing an object with SDXL inpainting, and exact text with a font renderer
+Failed edits kept as evidence (garbled poster text, mug that stayed white, removal that invented objects)
 
-## Technology stack
-Tools and models, and what each one does. (to fill in)
+Not built yet: the Gradio app, brush, before and after view, changed-area highlight, undo, and the simulated suggested regions with a tick list. These are planned, not implemented.
 
-## Running or inspecting the work
-Dependencies and setup steps. (to fill in)
+Dropped: recolouring. Prompting failed twice, colour selection tinted the whole box, and SAM masks recoloured whole books including their pages.
 
-## Development record
-Significant changes, why I made them and what I checked. 
+**Technology stack**
+Kaggle notebook, Tesla T4 GPU: where everything runs
+Stable Diffusion 1.5 inpainting (stable-diffusion-v1-5/stable-diffusion-inpainting, via diffusers): first model, used for the text and mug tests
+SDXL inpainting (via diffusers, model ID: SDXL_ID): adding or replacing an object with better style matching
+LaMa (simple-lama-inpainting): removal
+Segment Anything (facebook/sam-vit-base, via transformers): object masks for the dropped recolour tests
+Pillow, NumPy, matplotlib: masks, paste-back, font rendering, plots
+Undecided: how the Gradio app will be hosted (Kaggle share link or local)
 
-1. Development record in the README. Paste in the short notes: the Kaggle accelerator problem, the garbled text, and the 6.086 against 0.0 result. Do it now while it’s fresh.
+**Running or inspecting the work**
+Inspect without running: open notebooks/01-inpainting.ipynb. Results are saved in the outputs, and images are in evidence/
+To rerun: Kaggle notebook with the accelerator set to GPU T4 and Internet on. Upload testImage.png as a dataset and update image_path in the notebook
+LaMa install (pip prints dependency warnings, which can be ignored):
 
-## AI assistance
-Which tools I used, what I asked, what I changed and how I checked it. 
-I used chatgtp to generate a image since this is to test genrative imaging that would be a good choice but u can also use a nomral imaging i used that for testing purposes
+pip install -q --no-deps simple-lama-inpainting
+pip install -q opencv-python-headless fire
+- Run cells top to bottom. The SDXL cells need the cell that loads pipe_xl to run first
 
+**Development record**
+Kaggle accelerator: the first run failed because the accelerator was off. Switched to GPU T4 and added a CPU fallback
+Garbled text: Stable Diffusion 1.5 repeated the poster word and misspelled both copies. Kept as a failure example, and later text edits use a font renderer
+Leakage: the raw output changed areas outside the mask (6.086 against 0.0 after paste-back). Paste-back became a fixed step in every edit
+Removal: SD 1.5 invented objects in the mug area every time. Switched removal to LaMa, which fills from the surroundings, and used a mask with a margin
+Adding objects: moved to SDXL, which matched style and lighting better. Replacing the mug in one step looked cleaner than removing then adding
+Recolouring dropped: three methods tried (prompt, hue range, SAM masks plus hue shift). Kept the lesson that masks can cover too much, so the interface needs a preview and a way to correct them
+Text: tried font only, font plus SDXL pass, then printed-ink style (cream colour, transparency, blur, grain) on the moon poster. Several of my boxes landed on the wrong surface, which I only found by drawing the box on the image
 
-the tool (ChatGPT image generation), plus the model or version if it shows it, and the date you made it
-the prompt, copied as it is
-a note that you resized the image to 512 by 512 for the inpainting model
-a line saying you didn’t edit or retouch it, if that’s true
+Key commits: COMMIT_LINKS
 
-prompt" Generate a cosy, aesthetically pleasing study space with a desk, laptop, books, a mug, plants and decorative wall posters. Use warm sunset lighting, soft pastel colours and a detailed illustration style."
+**AI assistance**
+Test image: generated with ChatGPT image generation (version and date: IMAGE_VERSION_DATE). Prompt, as written: "Generate a cosy, aesthetically pleasing study space with a desk, laptop, books, a mug, plants and decorative wall posters. Use warm sunset lighting, soft pastel colours and a detailed illustration style." I resized it to 512 by 512 for the inpainting model and did not edit or retouch it.
 
+Test image
 
-result:
-<img width="1402" height="1122" alt="testImage" src="https://github.com/user-attachments/assets/5add45a6-1bf6-46c2-8b90-d7a5f2920e19" />
+Code and notes: I used Claude to help write the notebook code and notes. Examples of what I checked and changed:
 
+The hue-range recolour selected the whole box (7475 pixels, a solid rectangle), so I switched to SAM masks
+SAM's highest-scoring mask was the wrong object. I chose candidate 2 by looking at the overlays
+A suggested text box landed on the wrong poster. I checked it on the image and moved it
+I dropped recolouring after judging it did not support the main interaction
 
-## Additional files
-Where to find any extra files. (to fill in)
+**Additional files**
+notebooks/01-inpainting.ipynb: the experiments
+evidence/: saved comparison images used in the report
 
-#API Key Note
-
-The current implementation does not require a Hugging Face token. If one is required in the future, it should be stored as an environment variable and never committed to the repository.
+**API key note**
+No Hugging Face token is needed at the moment. If one is needed later, store it as an environment variable and never commit it.
