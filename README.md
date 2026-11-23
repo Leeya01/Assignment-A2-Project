@@ -28,7 +28,7 @@ The interface is finished and runs in a Kaggle notebook. The table below matches
 
 ## Known limitations
 
-- **Adding new objects to empty space is unreliable.** Replacing something that is already there works much better.
+- **Adding new objects to empty space is unreliable but can still work successfully.** Replacing something that is already there works much better at times.
 - **The mask check is a simple rule, so it can be wrong.** It marks the painted area as plain background when the detail level is low. On the cosy study it warned about an empty patch of desk, but adding a pen there still worked.
 - **Edits run at 512 then 1024 for SDXL.** Full-detail 1024 made edits blend away. The cost is that the result keeps the smaller working size and loses fine detail.
 - **Three variants take about three times as long** as one edit, because each one is a full SDXL run.
