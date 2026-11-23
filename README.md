@@ -4,8 +4,6 @@ Assignment 2 prototype for Intelligent Interactive Systems.
 
 The idea is to let a designer select a specific region of an AI-generated image and edit only that area, so a single wrong detail can be fixed without regenerating the whole image. The user paints over the area, types a short instruction and gets back an image where only the painted area has changed. The app shows what changed, keeps a record of every step and lets the user go back.
 
-**README prose word count:** 1744 (code and setup commands not included).
-
 ## Project status
 
 The interface is finished and runs in a Kaggle notebook. The table below matches the system diagram in `evidence/`, using the same three labels: implemented, simulated and planned.
