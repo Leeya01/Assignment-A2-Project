@@ -99,7 +99,7 @@ pip install -q opencv-python-headless fire
 
 **Test images:** The cosy study was generated with ChatGPT image generation. Version and date: `IMAGE_VERSION_DATE`. Prompt: "Generate a cosy, aesthetically pleasing study space with a desk, laptop, books, a mug, plants and decorative wall posters. Use warm sunset lighting, soft pastel colours and a detailed illustration style." Resized to 512 × 512 pixels, with no other edits. The underwater shipwreck scene: `UNDERWATER_IMAGE_SOURCE`.
 
-**Coding and writing help:** I used Claude to help fix errors and to draft the report version. It also helped draft the rationale table, the storyboard ideas, and the first version of the system diagram, which I then edited. I ran everything, checked it against the outputs and changed what was wrong. Examples:
+**Coding and writing help:** I used Claude to help fix errors and to draft the report version. It also helped draft the rationale table, the storyboard ideas, and the first version of the system diagram, which I then edited. I ran everything, checked it against the outputs and changed what was wrong. I also used it for final checks and fixing any issues with the Markdown format. Examples:
 
 - **Hue-range recolouring:** The selection covered the whole bounding box (7,475 pixels) and made a solid rectangle, so I switched to SAM masks.
 - **SAM mask choice:** The highest-scoring mask picked the wrong object. I inspected the overlays and chose candidate 2.
