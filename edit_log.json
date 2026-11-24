@@ -1,0 +1,95 @@
+{
+  "model": "SDXL inpainting",
+  "edits": [
+    {
+      "Step": 1,
+      "Time": "20:15:09",
+      "Kind": "Apply edit",
+      "Instruction": "a green sea turtle swimming, underwater, soft sunlight rays",
+      "Seed": 42,
+      "Guidance": 5.5,
+      "Result check": "Average change outside the mask: 0.0"
+    },
+    {
+      "Step": 2,
+      "Time": "20:16:41",
+      "Kind": "Apply edit",
+      "Instruction": "an open treasure chest full of gold coins, underwater",
+      "Seed": 42,
+      "Guidance": 5.5,
+      "Result check": "Average change outside the mask: 0.0"
+    },
+    {
+      "Step": 3,
+      "Time": "20:17:56",
+      "Kind": "Apply edit",
+      "Instruction": "a cluster of purple crystals, softly glowing, underwater",
+      "Seed": 42,
+      "Guidance": 5.5,
+      "Result check": "Average change outside the mask: 0.0"
+    },
+    {
+      "Step": 4,
+      "Time": "20:19:22",
+      "Kind": "Apply edit",
+      "Instruction": "a small underwater cave in the rock",
+      "Seed": 42,
+      "Guidance": 5.5,
+      "Result check": "Average change outside the mask: 0.0"
+    },
+    {
+      "Step": 5,
+      "Time": "20:20:15",
+      "Kind": "Apply edit",
+      "Instruction": "a glowing pearl inside an open clam shell",
+      "Seed": 42,
+      "Guidance": 5.5,
+      "Result check": "Average change outside the mask: 0.0"
+    },
+    {
+      "Step": 6,
+      "Time": "20:21:47",
+      "Kind": "Apply edit",
+      "Instruction": "a glass bottle with a rolled up message inside",
+      "Seed": 42,
+      "Guidance": 8.0,
+      "Result check": "Average change outside the mask: 0.0"
+    },
+    {
+      "Step": 7,
+      "Time": "20:23:33",
+      "Kind": "Suggestions (simulated)",
+      "Instruction": "2. Large crystal could be a different colour, 3. Open water could have wildlife, 1. Treasure chest looks plain",
+      "Seed": 42,
+      "Guidance": 8.0,
+      "Result check": "Applied 3 suggestion(s), skipped 0. These suggestions are simulated."
+    },
+    {
+      "Step": 8,
+      "Time": "20:27:07",
+      "Kind": "Variant 1",
+      "Instruction": "bubbles rising to the surface",
+      "Seed": 42,
+      "Guidance": 8.0,
+      "Result check": "Average change outside the mask: 0.0"
+    },
+    {
+      "Step": 9,
+      "Time": "20:27:10",
+      "Kind": "Variant 1",
+      "Instruction": "bubbles rising to the surface",
+      "Seed": 42,
+      "Guidance": 8.0,
+      "Result check": "Average change outside the mask: 0.0"
+    },
+    {
+      "Step": 10,
+      "Time": "20:30:11",
+      "Kind": "Variant 2",
+      "Instruction": "a glowing underwater cave entrance with crystals around it",
+      "Seed": 43,
+      "Guidance": 10.0,
+      "Result check": "Average change outside the mask: 0.0"
+    }
+  ]
+}
