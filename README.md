@@ -6,6 +6,8 @@ The idea is to let a designer select a specific region of an AI-generated image 
 
 ## Project status
 
+
+
 The interface is finished and runs in a Kaggle notebook. The table below matches the system diagram in `evidence/`, using the same three labels: implemented, simulated and planned.
 
 | Part | What it does | Status |
@@ -39,9 +41,8 @@ The interface is finished and runs in a Kaggle notebook. The table below matches
 
 - **Kaggle notebooks:** Main coding environment, using a Tesla T4 GPU.
 - **Stable Diffusion 1.5 Inpainting** (`stable-diffusion-v1-5/stable-diffusion-inpainting`, via Diffusers): First inpainting model, used for the text and mug experiments.
-- **SDXL Inpainting** (via Diffusers, model ID: `SDXL_ID`): Adds and replaces objects in the interface, with better style and lighting consistency.
-- **LaMa** (`simple-lama-inpainting`): Object removal.
-- **Segment Anything** (`facebook/sam-vit-base`, via Transformers): Object masks for the recolouring experiments.
+- **SDXL Inpainting** (via Diffusers, model ID: `diffusers/stable-diffusion-xl-1.0-inpainting-0.1`): Adds and replaces objects in the interface, with better style and lighting consistency.
+- **LaMa** (`simple-lama-inpainting`): Object removal.- **Segment Anything** (`facebook/sam-vit-base`, via Transformers): Object masks for the recolouring experiments.
 - **PyTorch and Diffusers:** Load and run the inpainting models.
 - **Pillow, NumPy and Matplotlib:** Image processing, masks, paste-back, font rendering and plots.
 - **Gradio:** Python library that builds the interface. Its image editor provides the brush, and its blocks, galleries and buttons make up the rest of the layout. The app is opened through the temporary `gradio.live` link that Kaggle prints, because the local `127.0.0.1` link cannot be reached from Kaggle.
@@ -49,7 +50,7 @@ The interface is finished and runs in a Kaggle notebook. The table below matches
 
 ## Running or inspecting the work
 
-**Inspect without running:** open `notebooks/01-inpainting.ipynb` for the experiments and `notebooks/02-interface.ipynb` for the app. Results are in `outputs/`. The storyboards, system diagram, screenshots and an example settings log are in `evidence/`.
+Inspect without running: open [1-inpainting.ipynb](https://github.com/Leeya01/Assignment-A2-Project/blob/main/1-inpainting.ipynb) for the experiments and [2-interface Final.ipynb](https://github.com/Leeya01/Assignment-A2-Project/blob/main/2-interface%20Final.ipynb) for the final app. Result images are in images/. The full write-up of what I tried and changed is in development-record.md.
 
 **To rerun:**
 
@@ -89,9 +90,16 @@ pip install -q opencv-python-headless fire
 - **Settings log:** Added a log of every edit, variant, suggestion, undo, jump and keep-editing action, with an export to `edit_log.json`. An edit that fails, for example with no mask, is not logged.
 - **Share link:** The `gradio.live` link sometimes timed out with a 504 error even though the app had started. Restarting the session and launching again gave a fresh link.
 
-**Key commits:** `COMMIT_LINKS`
 
-**Submission release:** the `a2-submission` tag.
+Key commits:
+- Experiments notebook: https://github.com/Leeya01/Assignment-A2-Project/commit/3455f3a44a68b2e851d15581690260f58d203ff6
+- Baseline interface: https://github.com/Leeya01/Assignment-A2-Project/commit/78a1e917f6ad1243ed20bf84aa916b74427a027c
+- Final interface: https://github.com/Leeya01/Assignment-A2-Project/commit/89e43bd3b6344c465f015276458f90ab8fe5dd69
+- Development record: https://github.com/Leeya01/Assignment-A2-Project/commit/f8e5b4440cb4e40d122accd40017c84998f11013
+- Evidence folder: https://github.com/Leeya01/Assignment-A2-Project/commit/47d733d318690f6153095284691df1b1413343e1
+
+Submission release: the `a2-submission` tag, https://github.com/Leeya01/Assignment-A2-Project/releases/tag/a2-submission
+
 
 ## AI assistance and attribution
 
@@ -112,10 +120,13 @@ pip install -q opencv-python-headless fire
 **Reused material:** The brush and editor widget, and the gallery, button and table components, come from Gradio. The app design, the code that turns strokes into a mask, the paste-back and precision check, the model integration and the feedback and control features are my own work. The models and libraries are listed in the tech stack.
 
 ## Additional files
-
-- `notebooks/01-inpainting.ipynb`: the image editing experiments.
-- `notebooks/02-interface.ipynb`: the interface and its features.
-- `evidence/`: the system diagram, storyboards, screenshots, an example settings log and saved comparison images used in the report.
+- development-record.md: the development record in full.
+- images/: result images from the experiments.
+- [1-inpainting.ipynb](https://github.com/Leeya01/Assignment-A2-Project/blob/main/1-inpainting.ipynb): the image editing experiments.
+- [2-baselineInterface.ipynb](https://github.com/Leeya01/Assignment-A2-Project/blob/main/2-baselineInterface.ipynb): the first version of the interface, kept as part of the development record.
+- [2-interface.ipynb](https://github.com/Leeya01/Assignment-A2-Project/blob/main/2-interface.ipynb): an earlier working copy of the interface.
+- [2-interface Final.ipynb](https://github.com/Leeya01/Assignment-A2-Project/blob/main/2-interface%20Final.ipynb): the final interface and all its features. This is the one to mark.
+- evidence/: the system diagram, storyboards, screenshots, an example settings log and saved comparison images used in the report.
 
 ## API key note
 
